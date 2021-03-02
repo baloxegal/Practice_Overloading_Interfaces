@@ -75,25 +75,7 @@ namespace Practice_Overloading_Interfaces
             int d = s / 60;
             int m = (int)(s % 60 * 0.6 / 60);
             s = s % 60;
-            if(d > 1)
-            {
-
-            }
-            var m = 0;
             
-            if (s < 0)
-            {
-                m--;
-                s += 60;
-            }
-            m = a.Minutes - b.Minutes + m;
-            if (m < 0)
-            {
-                d--;
-                m += 60;
-            }
-            d = a.Degrees - b.Degrees + d;
-            return new Angle { Degrees = d, Minutes = m, Seconds = s };
         }
     }
 }
