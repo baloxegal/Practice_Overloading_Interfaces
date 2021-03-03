@@ -15,10 +15,13 @@ namespace Practice_Overloading_Interfaces
             Angle c = a - b;
             Console.WriteLine($"Angle is: {c.Degrees}, {c.Minutes}, {c.Seconds}");
 
-            Angle d = new Angle { Degrees = 48, Minutes = 41, Seconds = 54 };
+            Angle d = new Angle { Degrees = 48, Minutes = 42, Seconds = 54 };
             Angle e = new Angle { Degrees = 126, Minutes = 32, Seconds = 31 };
             Angle f = d + e;
             Console.WriteLine($"Angle is: {f.Degrees}, {f.Minutes}, {f.Seconds}");
+
+            Angle g = d / 2;
+            Console.WriteLine($"Angle is: {g.Degrees}, {g.Minutes}, {g.Seconds}");
         }
     }
 }

@@ -71,11 +71,20 @@ namespace Practice_Overloading_Interfaces
         }
         public static Angle operator /(Angle a, int b)
         {
-            int s = (a.Degrees * 60 + a.Minutes * 60 + a.Seconds * 60) / b;
-            int d = s / 60;
-            int m = (int)(s % 60 * 0.6 / 60);
-            s = s % 60;
-            
+            int s = (a.Degrees * 3600 + a.Minutes * 60 + a.Seconds) / b;
+            Console.WriteLine(s);
+            int degrees = s / 3600;
+            Console.WriteLine(degrees);
+            int s1 = (int)(s / 3.6) % 1000;            
+            Console.WriteLine(s1);            
+            var s2 = (float)60 / 100 * s1 / 10;
+            Console.WriteLine(s2);
+            int minutes = (int)s2;
+            Console.WriteLine(minutes);
+            int seconds = (int)((float)60 / 100 * (int)(s2 % 1));
+            Console.WriteLine(seconds);
+
+            return new Angle { Degrees = degrees, Minutes = minutes, Seconds = seconds };
         }
     }
 }
