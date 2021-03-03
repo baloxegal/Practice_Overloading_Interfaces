@@ -69,22 +69,108 @@ namespace Practice_Overloading_Interfaces
         {
             return new Angle { Degrees = a.Degrees - angle, Minutes = a.Minutes, Seconds = a.Seconds };
         }
+        
         public static Angle operator /(Angle a, int b)
         {
-            int s = (a.Degrees * 3600 + a.Minutes * 60 + a.Seconds) / b;
-            Console.WriteLine(s);
-            int degrees = s / 3600;
-            Console.WriteLine(degrees);
-            int s1 = (int)(s / 3.6) % 1000;            
-            Console.WriteLine(s1);            
-            var s2 = (float)60 / 100 * s1 / 10;
-            Console.WriteLine(s2);
-            int minutes = (int)s2;
-            Console.WriteLine(minutes);
-            int seconds = (int)((float)60 / 100 * (int)(s2 % 1));
-            Console.WriteLine(seconds);
-
+            int s = (a.Degrees * 3600 + a.Minutes * 60 + a.Seconds) / b;            
+            int degrees = s / 3600;            
+            var s1 = (s / 0.36 % 10000) / 100 * 0.6;                       
+            int minutes = (int)s1;                        
+            int seconds = (int)Math.Round(s1 % 1 * 100 * 0.6);            
             return new Angle { Degrees = degrees, Minutes = minutes, Seconds = seconds };
+        }
+        public static double operator /(Angle a, Angle b)
+        {
+            int s1 = (a.Degrees * 3600 + a.Minutes * 60 + a.Seconds);
+            int s2 = (b.Degrees * 3600 + b.Minutes * 60 + b.Seconds);                    
+            return (double)((int)((double) s1 / s2 * 100)) / 100;
+        }
+        public static Angle operator *(Angle a, int b)
+        {
+            int s = (a.Degrees * 3600 + a.Minutes * 60 + a.Seconds) * b;
+            int degrees = s / 3600;
+            var s1 = (s / 0.36 % 10000) / 100 * 0.6;
+            int minutes = (int)s1;
+            int seconds = (int)Math.Round(s1 % 1 * 100 * 0.6);
+            return new Angle { Degrees = degrees, Minutes = minutes, Seconds = seconds };
+        }
+        public static bool operator <(Angle a, Angle b)
+        {
+            if (a.Degrees < b.Degrees)
+                return true;
+            else if (a.Degrees > b.Degrees)
+                return false;
+            else if (a.Minutes < b.Minutes)
+                return true;
+            else if (a.Minutes > b.Minutes)
+                return false;
+            else if (a.Seconds < b.Seconds)
+                return true;
+            else
+                return false;
+        }
+        public static bool operator >(Angle a, Angle b)
+        {
+            if (a.Degrees > b.Degrees)
+                return true;
+            else if (a.Degrees < b.Degrees)
+                return false;
+            else if (a.Minutes > b.Minutes)
+                return true;
+            else if (a.Minutes < b.Minutes)
+                return false;
+            else if (a.Seconds > b.Seconds)
+                return true;
+            else
+                return false;            
+        }
+        public static bool operator ==(Angle a, Angle b)
+        {
+            if (a.Degrees == b.Degrees && a.Minutes == b.Minutes && a.Seconds == b.Seconds)
+                return true;
+            else
+                return false;            
+        }
+        public static bool operator !=(Angle a, Angle b)
+        {
+            if (a.Degrees != b.Degrees || a.Minutes == b.Minutes || a.Seconds == b.Seconds)
+                return true;
+            else
+                return false;
+        }
+        public static bool operator >=(Angle a, Angle b)
+        {
+            if (a.Degrees > b.Degrees)
+                return true;
+            else if (a.Degrees < b.Degrees)
+                return false;
+            else if (a.Minutes > b.Minutes)
+                return true;
+            else if (a.Minutes < b.Minutes)
+                return false;
+            else if (a.Seconds > b.Seconds)
+                return true;
+            else if (a.Seconds < b.Seconds)
+                return false;
+            else
+                return true;
+        }
+        public static bool operator <=(Angle a, Angle b)
+        {
+            if (a.Degrees < b.Degrees)
+                return true;
+            else if (a.Degrees > b.Degrees)
+                return false;
+            else if (a.Minutes < b.Minutes)
+                return true;
+            else if (a.Minutes > b.Minutes)
+                return false;
+            else if (a.Seconds < b.Seconds)
+                return true;
+            else if (a.Seconds > b.Seconds)
+                return false;
+            else
+                return true;
         }
     }
 }
