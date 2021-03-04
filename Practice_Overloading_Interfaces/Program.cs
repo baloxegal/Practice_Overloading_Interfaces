@@ -41,20 +41,51 @@ namespace Practice_Overloading_Interfaces
             Console.WriteLine(a != b);
             Console.WriteLine(j == d);
 
-            Car[] cars = { new Car { Name = "Volvo", Owner = "Vasea", MaxSpeed = 250 },
-                           new Car { Name = "VW", Owner = "Petea", MaxSpeed = 230 },
-                           new Car { Name = "BMW", Owner = "Sergiu", MaxSpeed = 290 },
-                           new Car { Name = "Viper", Owner = "John", MaxSpeed = 390 },
-                           new Car { Name = "Mercedes", Owner = "Andrei", MaxSpeed = 320 },};
-            foreach(var cx in cars){
+            //Car Array
+            Car[] cars1 = { new Car { Name = "Volvo", Owner = "Vasea", MaxSpeed = 250 },
+                            new Car { Name = "VW", Owner = "Petea", MaxSpeed = 230 },
+                            new Car { Name = "BMW", Owner = "Sergiu", MaxSpeed = 290 },
+                            new Car { Name = "Viper", Owner = "John", MaxSpeed = 390 },
+                            new Car { Name = "Mercedes", Owner = "Andrei", MaxSpeed = 320 },};
+            Car[] cars2 = { new Car ( "Seat", "Igor", 280 ),
+                            new Car ( "Kamaz", "Marcel", 130 ),
+                            new Car ( "Opel", "Alex", 190 ),
+                            new Car ( "Omega", "Ion", 590 ),
+                            new Car ( "Zaparojets", "Colea", 690 ),};
+
+            foreach (var cx in cars1){
                 Console.WriteLine(cx);
             }
             Console.WriteLine("=================================================");
-            var sortedCars = cars.OrderBy(cv => cv.MaxSpeed);
-            foreach (var cy in sortedCars)
+            foreach (var cx in cars2)
+            {
+                Console.WriteLine(cx);
+            }
+            Console.WriteLine("=================================================");            
+            foreach (var cx in Car.carArray)
+            {
+                if(cx != null)
+                    Console.WriteLine(cx);
+            }
+            Console.WriteLine("=================================================");
+            var sortedCars1 = cars1.OrderBy(cv => cv.MaxSpeed);
+            foreach (var cy in sortedCars1)
             {
                 Console.WriteLine(cy);
             }
+            Console.WriteLine("=================================================");
+            var sortedCars2 = cars2.OrderBy(cv => cv.MaxSpeed);
+            foreach (var cy in sortedCars2)
+            {
+                Console.WriteLine(cy);
+            }
+            Console.WriteLine("=================================================");
+            var sortedCars3 = Car.carArray.Where(cv => cv != null).OrderBy(cv => cv.MaxSpeed);
+            foreach (var cy in sortedCars3)
+            {
+                Console.WriteLine(cy);
+            }
+            Console.WriteLine("=================================================");
         }
     }
 }
