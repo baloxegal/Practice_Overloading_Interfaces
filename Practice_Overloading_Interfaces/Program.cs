@@ -86,6 +86,27 @@ namespace Practice_Overloading_Interfaces
                 Console.WriteLine(cy);
             }
             Console.WriteLine("=================================================");
+            Car[] cars3 = { new Car { Name = "MAN", Owner = "Ghena", MaxSpeed = 130 },
+                            new Car { Name = "RENO", Owner = "Sergiu", MaxSpeed = 120 },
+                            new Car { Name = "MERCEDEC", Owner = "Dorin", MaxSpeed = 190 },
+                            new Car { Name = "MAZ", Owner = "Nicolae", MaxSpeed = 100 },
+                            new Car { Name = "KRAZ", Owner = "Oleg", MaxSpeed = 90 },};
+            foreach (var cy in cars3)
+            {
+                Console.WriteLine(cy);
+            }
+            Console.WriteLine("=================================================");
+            Array.Sort(cars3);
+            foreach (var cy in cars3)
+            {
+                Console.WriteLine(cy);
+            }
+            Console.WriteLine("=================================================");
+            Array.Sort(cars3, new CarComparator());
+            foreach (var cy in cars3)
+            {
+                Console.WriteLine(cy);
+            }
         }
     }
 }

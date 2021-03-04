@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Practice_Overloading_Interfaces
 {
-    class Car
+    class Car : IComparable<Car>
     {
         public static Car[] carArray = new Car[100];
         public static int count = 0;
@@ -64,5 +64,24 @@ namespace Practice_Overloading_Interfaces
         {
             return ($"Car: name - {Name}, owner - {Owner}, max speed km/h - {MaxSpeed}");
         }
-    }    
+
+        public int CompareTo(Car car)
+        {
+            return MaxSpeed.CompareTo(car.MaxSpeed);
+        }        
+    }
+    
+    class CarComparator : IComparer<Car>
+    {
+        public int Compare(Car x, Car y)
+        {
+            if (x.Owner.Length > y.Owner.Length)
+                return 1;
+            else if (x.Owner.Length < y.Owner.Length)
+                return -1;
+            else
+                return 0;
+        }
+    }
+
 }
